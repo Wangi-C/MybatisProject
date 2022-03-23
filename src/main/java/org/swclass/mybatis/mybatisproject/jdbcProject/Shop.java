@@ -9,6 +9,13 @@ public class Shop {
     public Shop() {
     }
 
+    public Shop(int shopNo, String shopName, String shopLoc, String shopStatus) {
+        this.shopNo = shopNo;
+        this.shopName = shopName;
+        this.shopLoc = shopLoc;
+        this.shopStatus = shopStatus;
+    }
+
     public int getShopNo() {
         return shopNo;
     }
