@@ -1,4 +1,4 @@
-package org.swclass.mybatis.mybatisproject.jdbcProject;
+package org.swclass.mybatis.mybatisproject.step2;
 
 public class Shop {
     private int shopNo;

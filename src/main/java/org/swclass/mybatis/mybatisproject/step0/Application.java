@@ -1,4 +1,4 @@
-package org.swclass.mybatis.mybatisproject.jdbcProject;
+package org.swclass.mybatis.mybatisproject.step0;
 
 import java.sql.*;
 import java.util.List;
