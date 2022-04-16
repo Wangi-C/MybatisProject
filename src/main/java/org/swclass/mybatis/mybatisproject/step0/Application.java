@@ -1,5 +1,7 @@
 package org.swclass.mybatis.mybatisproject.step0;
 
+import org.swclass.mybatis.mybatisproject.jdbcProject.SqlMapper;
+
 import java.sql.*;
 import java.util.List;
 

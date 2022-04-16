@@ -42,5 +42,6 @@
     <orderEntry type="library" name="Maven: com.oracle.database.security:osdt_core:19.3.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.oracle.database.ha:simplefan:19.3.0.0" level="project" />
     <orderEntry type="library" name="Maven: com.oracle.database.ha:ons:19.3.0.0" level="project" />
+    <orderEntry type="library" name="Maven: org.mybatis:mybatis:3.4.1" level="project" />
   </component>
 </module>

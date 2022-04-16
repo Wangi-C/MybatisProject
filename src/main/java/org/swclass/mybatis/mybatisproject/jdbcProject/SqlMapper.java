@@ -11,9 +11,9 @@ public class SqlMapper {
     private ResultSet resultSet;
 
     private String sqlResource =
-            "sql.properties";
+            "jdbc/sql.properties";
     private String configurationResource =
-            "config-jdbc.properties";
+            "jdbc/config-jdbc.properties";
     private Properties sql = new Properties();
     private Properties configuration = new Properties();
 
