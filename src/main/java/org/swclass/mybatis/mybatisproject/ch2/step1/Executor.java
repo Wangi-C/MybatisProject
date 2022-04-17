@@ -1,22 +1,26 @@
 package org.swclass.mybatis.mybatisproject.ch2.step1;
 
 import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.logging.Log;
+import org.apache.ibatis.logging.LogFactory;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+import org.swclass.mybatis.mybatisproject.Shop;
 
 import java.io.IOException;
 import java.io.Reader;
 
 public class Executor {
     private static SqlSessionFactory sqlSessionFactory;
+    private static final Log log = LogFactory.getLog(Executor.class);
 
     static {
         try {
             String resource = "mybatis/config-mybatis.xml";
             Reader reader = Resources.getResourceAsReader(resource);
             sqlSessionFactory = new SqlSessionFactoryBuilder().build(reader);
-        } catch (IOException e) {
+        } catch(Exception e) {
             e.printStackTrace();
         }
     }
@@ -25,11 +29,19 @@ public class Executor {
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
         try {
-            sqlSession.selectList("org.mybatis.persistence.ShopMapper.list");
+            Shop shop = new Shop();
+            shop.setShopNo(4);
+
+            shop = sqlSession.selectOne("org.mybatis.persistence.ShopMapper.selectByShopNo", shop);
+
+            log.debug(shop.getShopName());
         } catch (Exception e) {
             e.printStackTrace();
+
+            sqlSession.rollback();
         } finally {
             sqlSession.close();
         }
+
     }
 }
