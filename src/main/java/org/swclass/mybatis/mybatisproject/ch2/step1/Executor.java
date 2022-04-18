@@ -30,10 +30,12 @@ public class Executor {
 
         try {
             Shop shop = new Shop();
-            shop.setShopNo(4);
+            shop.setShopNo(2);
+            shop.setShopStatus("Y");
 
-            sqlSession.delete("org.mybatis.persistence.ShopMapper.delete", shop);
-            sqlSession.commit();
+            shop = sqlSession.selectOne("org.mybatis.persistence.ShopMapper.select", shop);
+
+            log.debug(shop.getShopStatus());
         } catch (Exception e) {
             e.printStackTrace();
 
