@@ -4,9 +4,6 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-    <settings>
-        <setting name="mapUnderscoreToCamelCase" value="true"/>
-    </settings>
     <typeAliases>
         <typeAlias alias="Shop" type="org.swclass.mybatis.mybatisproject.Shop"/>
     </typeAliases>
@@ -21,7 +18,8 @@
             </dataSource>
         </environment>
     </environments>
+
     <mappers>
-        <mapper resource="mybatis/ShopMapper.xml"/>
+        <mapper resource="mybatis/ShopMapper01.xml"/>
     </mappers>
 </configuration>

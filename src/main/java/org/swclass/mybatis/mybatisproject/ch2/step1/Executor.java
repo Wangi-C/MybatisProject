@@ -32,9 +32,8 @@ public class Executor {
             Shop shop = new Shop();
             shop.setShopNo(4);
 
-            shop = sqlSession.selectOne("org.mybatis.persistence.ShopMapper.selectByShopNo", shop);
-
-            log.debug(shop.getShopName());
+            sqlSession.delete("org.mybatis.persistence.ShopMapper.delete", shop);
+            sqlSession.commit();
         } catch (Exception e) {
             e.printStackTrace();
 

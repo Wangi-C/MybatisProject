@@ -5,7 +5,10 @@
 
 <mapper namespace="org.mybatis.persistence.ShopMapper">
     <select id="list" resultType="java.util.Map">
-        SELECT SHOP_NO, SHOP_NAME, SHOP_LOCATION, SHOP_STATUS
+        SELECT SHOP_NO
+             , SHOP_NAME
+             , SHOP_LOCATION
+             , SHOP_STATUS
         FROM SHOP
     </select>
 
@@ -15,8 +18,22 @@
     </insert>
 
     <select id="selectByShopNo" parameterType="Shop" resultType="Shop">
-        SELECT SHOP_NO, SHOP_NAME, SHOP_LOCATION, SHOP_STATUS
+        SELECT SHOP_NO
+             , SHOP_NAME
+             , SHOP_LOCATION
+             , SHOP_STATUS
         FROM SHOP
         WHERE SHOP_NO = #{shopNo}
     </select>
+
+    <update id="update" parameterType="Shop">
+        UPDATE SHOP
+        SET SHOP_STATUS = #{shopStatus}
+        WHERE SHOP_NO = #{shopNo}
+    </update>
+
+    <delete id="delete" parameterType="Shop">
+        DELETE SHOP
+        WHERE SHOP_NO = #{shopNo}
+    </delete>
 </mapper>
