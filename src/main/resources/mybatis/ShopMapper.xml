@@ -4,14 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="org.mybatis.persistence.ShopMapper">
-    <select id="select" parameterType="Shop" resultType="Shop">
+    <sql id="selectSql">
         SELECT SHOP_NO
              , SHOP_NAME
              , SHOP_LOCATION
              , SHOP_STATUS
         FROM SHOP
-        WHERE SHOP_NO = #{shopNo}
-            AND SHOP_STATUS = ${shopStatus}
+    </sql>
+
+    <select id="select" parameterType="Shop" resultType="Shop">
+        <include refid="selectSql"/>
+        <where>
+            <if test="shopNo > 0">
+                AND SHOP_NO = #{shopNo}
+            </if>
+        </where>
     </select>
 
     <insert id="insert" parameterType="Shop">
@@ -38,4 +45,16 @@
         DELETE SHOP
         WHERE SHOP_NO = #{shopNo}
     </delete>
+
+    <select id="selectByNo" parameterType="Shop" resultType="Shop">
+        <include refid="selectSql"></include>
+        <trim prefix="WHERE" prefixOverrides="AND | OR">
+            <if test="shopNo > 1">
+                AND SHOP_NO = #{shopNo}
+            </if>
+            <if test='shopStatus != null and "N".equals(shopStatus)'>
+                OR SHOP_STATUS = #{shopStatus}
+            </if>
+        </trim>
+    </select>
 </mapper>

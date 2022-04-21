@@ -30,10 +30,11 @@ public class Executor {
 
         try {
             Shop shop = new Shop();
+            shop.setShopName("Mom Store");
             shop.setShopNo(2);
-            shop.setShopStatus("Y");
+            shop.setShopStatus("N");
 
-            shop = sqlSession.selectOne("org.mybatis.persistence.ShopMapper.select", shop);
+            shop = sqlSession.selectOne("org.mybatis.persistence.ShopMapper.selectByNo", shop);
 
             log.debug(shop.getShopStatus());
         } catch (Exception e) {
